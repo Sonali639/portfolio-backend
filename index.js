@@ -1,0 +1,34 @@
+const express = require('express');
+const cors = require('cors');
+const connectDB = require('./db');
+
+const app = express();
+
+// ✅ Enable CORS before any routes
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
+// ✅ Middleware to parse JSON
+app.use(express.json());
+
+// ✅ Connect to MongoDB
+connectDB();
+
+// ✅ Routes
+app.use('/api', require('./routes/experience'));
+app.use('/api', require('./routes/about'));
+app.use('/api', require('./routes/projects'));
+app.use('/auth', require('./routes/login'));
+
+// ✅ Default route
+app.get('/', (req, res) => {
+  res.send('Server is working!');
+});
+
+// ✅ Start server
+app.listen(8080, () => {
+  console.log('Server is running on port 8080');
+});
