@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 
@@ -28,7 +31,8 @@ app.get('/', (req, res) => {
   res.send('Server is working!');
 });
 
+const PORT = process.env.PORT || 8080;
 // ✅ Start server
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.log('Server is running on port 8080');
 });
