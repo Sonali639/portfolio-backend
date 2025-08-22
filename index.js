@@ -9,7 +9,7 @@ const app = express();
 
 // ✅ Enable CORS before any routes
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://sonali-saluja-admin.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
